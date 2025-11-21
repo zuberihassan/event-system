@@ -25,20 +25,23 @@ router.get("/", async (req, res) => {
 
 // Mark attendance
 router.post("/mark/:code", async (req, res) => {
-    try {
-        const guest = await Guest.findOne({ code: req.params.code });
+  try {
+    const guest = await Guest.findOne({ code: req.params.code });
 
-        if (!guest) return res.json({ message: "Guest not found" });
+    if (!guest) return res.json({ message: "Guest not found" });
 
-        if (guest.attended)
-            return res.json({ message: "Already Checked In" });
+    if (guest.attended)
+      return res.json({ message: "Already Checked In" });
 
-        guest.attended = true;
-        await guest.save();
+    guest.attended = true;
+    await guest.save();
 
-        return res.json({ message: "Guest Checked In Successfully" });
-    } catch (err) {
-        return res.status(500).json({ error: err.message });
-    }
+    return res.json({ message: "Guest Checked In Successfully" });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
 });
+
+;
+
 module.exports = router;
