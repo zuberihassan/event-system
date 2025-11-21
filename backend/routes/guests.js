@@ -40,8 +40,5 @@ router.post("/mark/:code", async (req, res) => {
     } catch (err) {
         return res.status(500).json({ error: err.message });
     }
-
-
-;
-
+});
 module.exports = router;
