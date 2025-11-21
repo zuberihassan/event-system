@@ -42,6 +42,6 @@ router.post("/mark/:code", async (req, res) => {
     }
 });
 
-});
+;
 
 module.exports = router;
